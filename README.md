@@ -11,7 +11,7 @@ A multi-agent system built with LangGraph that automatically generates complete 
 
 ## How It Works
 
-![Agent Workflow](workflow.png)
+![Agent Workflow](flow.excalidraw.png)
 
 The system follows a sequential workflow:
 
