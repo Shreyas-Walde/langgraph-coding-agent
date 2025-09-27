@@ -9,11 +9,21 @@ A multi-agent system built with LangGraph that automatically generates complete 
 - **Coding Agent**: Generates actual code files using LLM-powered tools
 - **Multi-file Support**: Creates HTML, CSS, and JavaScript files automatically
 
+## How It Works
+
+![Agent Workflow](workflow.png)
+
+The system follows a sequential workflow:
+
+1. **Planner**: Analyzes user prompt and creates project structure
+2. **Architect**: Breaks down plan into specific implementation tasks
+3. **Coder**: Iteratively implements each task, creating files as needed (loops until all tasks complete)
+
 ## Installation
 
 ```bash
 # Clone the repository
-git clone <repository-url>
+git clone https://github.com/Shreyas-Walde/langgraph-coding-agent.git
 cd coding_agent
 
 # Install dependencies
@@ -38,8 +48,7 @@ result = agent.invoke({
 Or run directly:
 
 ```bash
-cd agent
-python graph.py
+python main.py
 ```
 
 ## Project Structure
@@ -51,13 +60,8 @@ agent/
 ├── states.py      # State management classes
 ├── tools.py       # File I/O tools
 └── generated_projects/  # Output directory
+main.py            # CLI interface
 ```
-
-## How It Works
-
-1. **Planner**: Analyzes user prompt and creates project structure
-2. **Architect**: Breaks down plan into specific implementation tasks
-3. **Coder**: Iteratively implements each task, creating files as needed
 
 ## Configuration
 
