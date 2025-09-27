@@ -1,0 +1,307 @@
+/*
+ * PeachyTodo – Pastel Theme & Responsive Layout
+ * -------------------------------------------------
+ * This stylesheet defines a soft pastel colour palette, global resets,
+ * component styling for the header, task input form, task list items,
+ * animation helpers, filter button states, responsive adjustments for
+ * mobile devices, and accessibility helpers.
+ */
+
+/* -------------------------------------------------
+ * 1. Colour palette (CSS variables)
+ * ------------------------------------------------- */
+:root {
+  /* Pastel palette */
+  --peach: #ffdab9;   /* light peach */
+  --pink: #ffb6c1;    /* soft pink */
+  --cream: #fff5e1;   /* creamy background for cards */
+  --text: #333333;    /* high‑contrast dark text */
+  --bg: #fdfdfd;      /* page background */
+}
+
+/* -------------------------------------------------
+ * 2. Global resets & base styling
+ * ------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+/* Ensure focus is clearly visible – accessible */
+:focus-visible {
+  outline: 2px solid var(--pink);
+  outline-offset: 2px;
+}
+
+/* -------------------------------------------------
+ * 3. Header
+ * ------------------------------------------------- */
+header {
+  background: var(--peach);
+  text-align: center;
+  padding: 1.5rem 0;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2rem;
+  color: var(--text);
+}
+
+/* -------------------------------------------------
+ * 4. Main layout – form & task list
+ * ------------------------------------------------- */
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* ---- 4.1 Task input form ---- */
+#task-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+#new-task {
+  flex: 1 1 200px;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  background: #fff;
+}
+
+#new-task:focus {
+  border-color: var(--pink);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 182, 193, 0.4); /* pink focus glow */
+}
+
+#due-date {
+  flex: 0 0 auto;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 0.4rem;
+  font-size: 0.95rem;
+  background: #fff;
+}
+
+#due-date:focus {
+  border-color: var(--pink);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 182, 193, 0.4);
+}
+
+#task-form button[type="submit"] {
+  flex: 0 0 auto;
+  padding: 0.5rem 1rem;
+  background: var(--pink);
+  border: none;
+  border-radius: 0.5rem;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+#task-form button[type="submit"]:hover,
+#task-form button[type="submit"]:focus {
+  background: #ff9aa2; /* slightly deeper pink */
+}
+
+/* ---- 4.2 Task list ---- */
+#task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--cream);
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.75rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  gap: 0.5rem;
+}
+
+.task-item .left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.task-item input[type="checkbox"] {
+  width: 1.2rem;
+  height: 1.2rem;
+  cursor: pointer;
+}
+
+.task-item .task-text {
+  font-size: 1rem;
+  word-break: break-word;
+}
+
+.task-item .due-date {
+  background: var(--pink);
+  color: #fff;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.3rem;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.task-item .actions {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.task-item .actions button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.2rem;
+  color: var(--text);
+  font-size: 1.1rem;
+}
+
+.task-item .actions button:hover,
+.task-item .actions button:focus {
+  color: var(--pink);
+}
+
+/* ---- 4.3 Completed state ---- */
+.task-item.completed .task-text {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+/* -------------------------------------------------
+ * 5. Animations – fade in/out for task items
+ * ------------------------------------------------- */
+.fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.fade-out {
+  animation: fadeOut 0.3s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+/* -------------------------------------------------
+ * 6. Footer – filter buttons
+ * ------------------------------------------------- */
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  padding: 1rem 0;
+}
+
+footer .filter,
+#clear-completed {
+  background: #e0e0e0;
+  border: none;
+  border-radius: 0.4rem;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s ease;
+}
+
+footer .filter.active {
+  background: var(--pink);
+  color: #fff;
+}
+
+footer .filter:hover,
+footer .filter:focus,
+#clear-completed:hover,
+#clear-completed:focus {
+  background: #d5d5d5;
+}
+
+/* -------------------------------------------------
+ * 7. Responsive layout – mobile first adjustments
+ * ------------------------------------------------- */
+@media (max-width: 600px) {
+  /* Stack form elements vertically */
+  #task-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  #new-task,
+  #due-date,
+  #task-form button[type="submit"] {
+    width: 100%;
+  }
+
+  /* Enlarge tap targets for better touch usability */
+  #task-form button[type="submit"],
+  footer .filter,
+  #clear-completed {
+    min-height: 44px; /* recommended minimum touch target */
+    font-size: 1rem;
+  }
+}
+
+/* -------------------------------------------------
+ * 8. Accessibility – reduced motion & high contrast
+ * ------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .fade-in,
+  .fade-out {
+    animation-duration: 0s !important;
+  }
+}
+
+/* High‑contrast mode – ensure text remains readable */
+@media (prefers-contrast: high) {
+  :root {
+    --text: #000000;
+    --bg: #ffffff;
+    --cream: #f0f0f0;
+    --peach: #ffd8b1;
+    --pink: #ff8da1;
+  }
+}

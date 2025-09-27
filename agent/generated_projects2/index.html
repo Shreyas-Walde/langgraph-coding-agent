@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PeachyTodo</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <!-- Hidden SVG sprite references for icons (optional) -->
+  <svg style="display:none;" aria-hidden="true">
+    <use href="assets/icons.svg#icon-add"></use>
+    <use href="assets/icons.svg#icon-edit"></use>
+    <use href="assets/icons.svg#icon-delete"></use>
+    <use href="assets/icons.svg#icon-check"></use>
+    <use href="assets/icons.svg#icon-drag"></use>
+    <use href="assets/icons.svg#icon-moon"></use>
+  </svg>
+
+  <div id="app" class="theme-light" role="application">
+    <header>
+      <h1>PeachyTodo</h1>
+    </header>
+
+    <main>
+      <form id="task-form">
+        <input id="new-task" type="text" placeholder="What needs to be done?" aria-label="New task" required />
+        <input id="due-date" type="date" aria-label="Due date" />
+        <button type="submit">Add</button>
+      </form>
+      <ul id="task-list" aria-live="polite" aria-label="Task list"></ul>
+    </main>
+
+    <footer>
+      <button class="filter" data-filter="all">All</button>
+      <button class="filter" data-filter="active">Active</button>
+      <button class="filter" data-filter="completed">Completed</button>
+      <button id="clear-completed">Clear Completed</button>
+    </footer>
+  </div>
+</body>
+</html>
