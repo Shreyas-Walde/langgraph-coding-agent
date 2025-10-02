@@ -4,7 +4,7 @@ from typing import Tuple
 from langchain_core.tools import tool
 
 # Project diretory
-PROJECT_ROOT = pathlib.Path.cwd() / "generated_projects2"
+PROJECT_ROOT = pathlib.Path.cwd() / "generated_projects_3"
 
 
 def safe_path_for_project(path: str) -> pathlib.Path:

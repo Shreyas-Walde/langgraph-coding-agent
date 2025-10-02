@@ -86,7 +86,7 @@ graph.add_edge('planner', 'architect')
 graph.add_edge('architect','coder')
 graph.add_conditional_edges(
     "coder",
-    lambda s: "END" if s.get("status") == "DONE" else "coder",
+    lambda x: "END" if x.get("status") == "DONE" else "coder",
     {"END": END, "coder": "coder"}
 )
 
@@ -94,6 +94,6 @@ graph.add_conditional_edges(
 agent = graph.compile()
 
 if __name__ == "__main__":
-    result = agent.invoke({"user_prompt": "create a beautiful todo web app in a very girlish theme, use peach, pink, cream, color theme in html, js, css"},
+    result = agent.invoke({"user_prompt": "create asethetic looking landing page, for a cute bakery shop, use color like, pink, peach, matcha, cream,etc, tech-stack should in html, css, js only"},
     {"recursion_limit": 100})
     print("Final State:", result)
